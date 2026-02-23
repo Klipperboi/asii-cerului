@@ -1,3 +1,39 @@
 === INTRODUCERE ===
 
 La izbucnirea Primului Război Mondial, în 1914, aviația era o tehnologie nouă, aflată încă în fază experimentală. Inițial folosite pentru recunoaștere și observarea artileriei, avioanele erau fragile, construite din lemn și pânză, iar confruntările aeriene erau improvizate. Introducerea mitralierei sincronizate în 1915 a transformat însă avionul într-o armă ofensivă, marcând începutul luptei pentru superioritatea aeriană. Pe parcursul războiului, aparatele de zbor au devenit tot mai rapide, mai bine înarmate și specializate, iar controlul cerului a ajuns să influențeze decisiv desfășurarea operațiunilor de pe sol.
+
+=== CONTEXT ===
+
+La izbucnirea războiului, în 1914, aviația era o armă tânără și imperfectă. Avioanele, construite din lemn și pânză, erau fragile, lente și slab înarmate. Misiunile lor principale vizau recunoașterea și corectarea tirului de artilerie. Piloții se salutau în aer, iar primele confruntări constau în aruncarea unor obiecte sau în folosirea armelor personale.
+
+Apariția mitralierei sincronizate în 1915, perfecționată de Anthony Fokker, a schimbat radical echilibrul. Posibilitatea de a trage prin discul elicei fără a o avaria a transformat avionul într-o armă ofensivă veritabilă. A urmat perioada cunoscută drept „Flagelul Fokker”, care a marcat temporar dominația germană în aer.
+
+FRONTURI ȘI OPERAȚIUNI
+
+Frontul de Vest a devenit centrul confruntărilor aeriene intense. La Verdun și pe Somme, aviația a sprijinit ofensiva terestră, a bombardat poziții inamice și a luptat pentru superioritate aeriană. Escadrilele de vânătoare au căpătat statut de unități de elită.
+
+Pe Frontul de Est, condițiile meteorologice dificile și infrastructura limitată au restrâns amploarea operațiunilor. Aici, avioanele au fost utilizate preponderent pentru recunoaștere și legătură.
+
+În Orientul Mijlociu, aviația a sprijinit trupele britanice în confruntările cu Imperiul Otoman, fiind folosită pentru supraveghere și atacuri ușoare.
+
+În zona Alpilor, pe frontul italian, luptele aeriene dintre austro-ungari și italieni au vizat în special liniile de aprovizionare și pozițiile montane strategice.
+
+INDUSTRIE ȘI TEHNOLOGIE
+
+Războiul a generat o mobilizare industrială fără precedent. Franța a produs peste 50.000 de avioane, Marea Britanie aproximativ 55.000, Germania circa 45.000, iar Italia și Austro-Ungaria câteva mii. Fabricile au devenit obiective strategice, iar forța de muncă a inclus tot mai multe femei.
+
+Progresele tehnologice au fost rapide: motoare mai puternice, armament îmbunătățit, structuri mai ușoare și aparate specializate pentru vânătoare, bombardament sau recunoaștere.
+
+ORGANIZARE ȘI STRATEGIE
+
+Marile puteri au creat servicii aeriene distincte: Royal Flying Corps, Luftstreitkräfte, Aviation Militaire, Corpo Aeronautico Militare. Inițial subordonate armatei terestre, acestea au câștigat treptat autonomie.
+
+Comandanții au înțeles că superioritatea aeriană influențează decisiv desfășurarea operațiunilor pe sol. În paralel, propaganda a cultivat imaginea „cavalerilor aerului”, transformând piloții în simboluri ale curajului și modernității.
+
+CRONOLOGIE
+
+1914 – Primele misiuni de recunoaștere; apar bombardiere improvizate
+1915 – Apar avioanele de vânătoare specializate; începe „Flagelul Fokker”
+1916 – Utilizare masivă la Verdun; apar Nieuport 11 și Albatros D.I
+1917 – Perfecționarea tacticilor de echipă; sosirea escadrilelor americane
+1918 – Apar bombardiere grele și vânătoare de înaltă performanță; armistițiul
