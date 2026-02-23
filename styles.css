@@ -5,13 +5,14 @@ body {
 
 html {
   scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
 
 /* sidenav */
 
 .sidenav {
   height: 100%;
-  width: 25%;
+  width: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -63,11 +64,30 @@ html {
   background: #26231F;
 }
 
+.title {
+  text-align: center;
+  font-size: 80px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-family: "EB Garamond", serif;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 20px;
+  font-family: "im fell english", serif;
+  margin-bottom: 20px;
+  margin-top: -20px;
+  color: #777;
+  letter-spacing: 10px;
+  font-weight: lighter;
+}
+
 h1 {
   text-align: center;
   font-size: 40px;
   margin-top: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   font-family: "EB Garamond", serif;
 }
 
@@ -75,7 +95,6 @@ h2 {
   text-align: center;
   font-size: 20px;
   font-family: "Cinzel", serif;
-  margin-top: 80px;
   margin-bottom: 30px;
   color: #777777;
   letter-spacing: 10px;
@@ -103,7 +122,7 @@ h4 {
 
 .ToC {
   text-align: center;
-  font-family: "MedievalSharp", serif;
+  font-family: "cinzel", serif;
   font-size: 50px;
   color: #B08A3E;
   font-weight: normal;
@@ -112,28 +131,142 @@ h4 {
   letter-spacing: 7px;
 }
 
+.text {
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-bottom: 60px;
+}
+
+.text p {
+  font-family:"EB Garamond", serif;
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+  text-align: justify;
+}
+
+.three::first-letter {
+  -webkit-initial-letter: 3;
+  initial-letter: 3;
+  color: #B08A3E;
+  padding-right: 10px;
+  font-size: 3.5em;
+  font-family: "cinzel", serif;
+  float: left;
+}
+
+/* subsection headings inside the text */
+.subsection {
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 28px;
+  color: #B08A3E;
+  position: relative;
+  font-weight: bold;
+}
+
+.subsection::after {
+  content: "";
+  display: block;
+  width: 55%;
+  height: 2px;
+  background: linear-gradient(to right, #B08A3E, transparent);  margin: 14px auto 0;
+  margin-left: 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 18px;
+  margin: 12px 0;
+  font-family: "eb garamond", serif;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.timeline-year {
+  min-width: 70px;
+  font-weight: 600;
+  color: #222;
+}
+
+.timeline-text {
+  flex: 1;
+  text-align: justify;
+}
+
+.timeline {
+  position: relative;
+  margin: 25px 0 10px;
+  padding-left: 60px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(176, 138, 62, 0.8);
+  z-index: 0;
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  column-gap: 25px;
+  margin: 22px 0;
+  font-family: "EB Garamond", serif;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -41px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fbf7f0;
+  border: 2px solid #B08A3E;
+}
+
+.timeline-year {
+  font-weight: 600;
+  color: #222;
+}
+.timeline-text {
+  text-align: justify;
+}
+
 .content-box {
   width: 70%;
   height: auto;
   margin: 60px auto;
   padding: 20px;
-  background: #ffffff;
+  background: #fbf7f0;
+  border: 1px solid rgba(0,0,0,0.15);
   box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.2),
-    0 6px 20px rgba(0, 0, 0, 0.19);
+    0 10px 25px rgba(0,0,0,0.18);
   overflow-y: auto;
   overflow-x: hidden;
   overflow: visible;
   position: absolute;
-  left: calc(25% + (75% - 70%) / 2 - 15px);
+  left: calc(20% + (75% - 70%) / 2 + 15px);
 }
 
-.divider{
-  width: 90%;
-  margin: 0 auto;
-  border-top: 1px solid #222;
-  border-bottom: 1px solid #222;
+.divider {
+  width: 80%;
+  margin: 40px auto;
+  margin-top: 0;
   height: 2px;
+  background: linear-gradient(to right, transparent, #222, transparent);
 }
 
 .image-container {
@@ -154,9 +287,6 @@ h4 {
   box-sizing: border-box;
 }
 
-.text p{
-  font-family:"EB Garamond", serif;
-  font-size: 20px;
-  line-height: 1.6;
-  margin: 0 0 14px;
+.media-img {
+  filter: sepia(70%) contrast(90%) brightness(95%) saturate(85%);
 }
