@@ -10,6 +10,15 @@ function pickSectionFromFile(fullText, wantedTitle) {
   return map[wantedTitle.trim().toLowerCase()] || "";
 }
 
+function slugify(str) {
+  return String(str)
+    .trim()
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function isAllCapsHeading(s) {
   const t = (s || "").trim();
   if (!t) return false;
@@ -29,8 +38,8 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-function renderSmartText(chosenText) {
-  const blocks = chosenText
+function renderSmartText(chosenText, parentId = "") {
+    const blocks = chosenText
     .replace(/\r\n/g, "\n")
     .split(/\n\s*\n/) 
     .map(b => b.trim())
@@ -43,10 +52,10 @@ function renderSmartText(chosenText) {
 for (const block of blocks) {
   if (isAllCapsHeading(block)) {
     const title = block.trim();
-
     inChronology = (title === "CRONOLOGIE");
 
-    htmlParts.push(`<p class="subsection">${escapeHtml(title)}</p>`);
+    const id = parentId ? `${parentId}-${slugify(title)}` : slugify(title);
+    htmlParts.push(`<p class="subsection" id="${escapeHtml(id)}">${escapeHtml(title)}</p>`);
     continue;
   }
 
@@ -106,21 +115,65 @@ async function fillTextBlocks() {
     const fileText = cache.get(src);
     const chosenText = pickSectionFromFile(fileText, wanted);
 
-    el.innerHTML = renderSmartText(chosenText);
+    const parentId = el.getAttribute("data-parent") || "";
+    el.innerHTML = renderSmartText(chosenText, parentId);
   }
 }
 
 function setActiveNav(id) {
+  const anchorEl = document.getElementById(id);
+
+  const mainSectionEl = anchorEl ? anchorEl.closest(".page-section") : null;
+  const mainId = mainSectionEl ? mainSectionEl.id : id;
+
   const navLinks = document.querySelectorAll(".sidenav a");
-  navLinks.forEach(link => {
-    link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+  navLinks.forEach(link => link.classList.remove("active"));
+
+  const mainLink = document.querySelector(`.sidenav a[href="#${CSS.escape(mainId)}"]`);
+  if (mainLink) mainLink.classList.add("active");
+
+  if (id && id !== mainId) {
+    const subLink = document.querySelector(`.sidenav .subnav a[href="#${CSS.escape(id)}"]`);
+    if (subLink) subLink.classList.add("active");
+  }
+
+  document.querySelectorAll(".nav-group[data-group]").forEach(group => {
+    const groupId = group.getAttribute("data-group");
+    group.classList.toggle("expanded", groupId === mainId);
   });
 
   localStorage.setItem("lastSectionId", id);
-
   history.replaceState(null, "", "#" + id);
 }
 
+function setupSubsectionSpy() {
+  const heads = Array.from(document.querySelectorAll(".subsection[id]"));
+  if (!heads.length) return;
+
+  const halfLine = () => window.innerHeight * 0.5;
+
+  const observer = new IntersectionObserver(
+    () => {
+      const passed = heads
+        .map(h => ({ h, top: h.getBoundingClientRect().top }))
+        .filter(x => x.top <= halfLine());
+
+      if (!passed.length) return;
+
+      passed.sort((a, b) => b.top - a.top);
+      const best = passed[0].h;
+
+      if (best?.id) setActiveNav(best.id);
+    },
+    {
+      root: null,
+      rootMargin: "0px 0px -50% 0px",
+      threshold: 0
+    }
+  );
+
+  heads.forEach(h => observer.observe(h));
+}
 function restoreLastPosition() {
   const hash = (location.hash || "").replace("#", "").trim();
   const savedY = localStorage.getItem("lastScrollY");
@@ -148,48 +201,46 @@ function setupScrollSpy() {
   const sections = Array.from(document.querySelectorAll(".page-section"));
   if (!sections.length) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries.filter(e => e.isIntersecting);
-      if (!visible.length) return;
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries.filter(e => e.isIntersecting);
+    if (!visible.length) return;
 
-      visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-      const best = visible[0].target;
-      const id = best.getAttribute("id");
-      if (id) setActiveNav(id);
-    },
-    {
-      root: null,
-      threshold: [0, 0.25, 0.5, 0.75, 1],
-      rootMargin: "-35% 0px -55% 0px"
-    }
-  );
+    visible.sort((a, b) =>
+      Math.abs(a.boundingClientRect.top - window.innerHeight * 0.5) -
+      Math.abs(b.boundingClientRect.top - window.innerHeight * 0.5)
+    );
+
+    const best = visible[0].target;
+    const id = best.getAttribute("id");
+    if (id) setActiveNav(id);
+  }, {
+    root: null,
+    rootMargin: "0px 0px -50% 0px",
+    threshold: 0
+  });
 
   sections.forEach(section => observer.observe(section));
+}
 
-  let rafPending = false;
-  window.addEventListener("scroll", () => {
-    if (rafPending) return;
-    rafPending = true;
-    requestAnimationFrame(() => {
-      localStorage.setItem("lastScrollY", String(window.scrollY));
-      rafPending = false;
-    });
-  }, { passive: true });
+function buildSubnavs() {
+  document.querySelectorAll(".subnav[data-for]").forEach(subnav => {
+    const parent = subnav.getAttribute("data-for");
+    const section = document.getElementById(parent);
+    if (!section) return;
 
-  document.querySelectorAll(".sidenav a").forEach(a => {
-    a.addEventListener("click", () => {
-      const id = (a.getAttribute("href") || "").replace("#", "");
-      if (id) {
-        localStorage.setItem("lastSectionId", id);
-      }
-    });
+    const headings = Array.from(section.querySelectorAll(".subsection[id]"));
+    subnav.innerHTML = headings.map(h => {
+      const id = h.id;
+      const text = h.textContent.trim();
+      return `<a href="#${escapeHtml(id)}" data-sub="${escapeHtml(id)}"><span>${escapeHtml(text)}</span></a>`;
+    }).join("");
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fillTextBlocks().catch(console.error);
-
+document.addEventListener("DOMContentLoaded", async () => {
+  await fillTextBlocks();
+  buildSubnavs();
   restoreLastPosition();
   setupScrollSpy();
+  setupSubsectionSpy();
 });
