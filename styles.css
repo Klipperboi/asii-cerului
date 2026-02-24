@@ -64,6 +64,56 @@ html {
   background: #26231F;
 }
 
+.nav-group .subnav {
+  display: none;
+  margin-right: 8px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-group.expanded .subnav {
+  display: block;
+}
+
+.subnav a {
+  display: block;
+  padding: 12px 28px 12px 46px;
+  text-decoration: none;
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  color: rgba(207,198,184,0.9);
+  background: transparent;
+}
+
+.subnav a:hover,
+.subnav a.active {
+  background: #26231F;
+}
+
+.subnav a span {
+  display: inline-block;
+  transform: translateX(0);
+  transition: transform 0.22s cubic-bezier(.2,.8,.2,1),
+              color 0.15s ease;
+}
+
+.subnav a:hover span,
+.subnav a.active span {
+  transform: translateX(10px);
+  color: #B08A3E;
+}
+
+.sidenav .nav-item.active {
+  background: #26231F;
+  color: #B08A3E;
+}
+
+.sidenav .subnav a.active {
+  background: transparent;
+  color: #B08A3E;
+  position: relative;
+}
+/* fonts */
+
 .title {
   text-align: center;
   font-size: 80px;
@@ -141,7 +191,7 @@ h4 {
   font-family:"EB Garamond", serif;
   font-size: 20px;
   line-height: 1.8;
-  margin-bottom: 22px;
+  margin-bottom: -7px;
   text-align: justify;
 }
 
@@ -247,18 +297,14 @@ h4 {
 
 .content-box {
   width: 70%;
-  height: auto;
-  margin: 60px auto;
+  margin: 60px 0 140px 25%;
   padding: 20px;
   background: #fbf7f0;
+  border-radius: 6px;
   border: 1px solid rgba(0,0,0,0.15);
-  box-shadow:
-    0 10px 25px rgba(0,0,0,0.18);
-  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
   overflow-x: hidden;
-  overflow: visible;
-  position: absolute;
-  left: calc(20% + (75% - 70%) / 2 + 15px);
+  box-sizing: border-box;
 }
 
 .divider {
