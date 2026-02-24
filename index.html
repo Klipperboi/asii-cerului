@@ -16,8 +16,10 @@
   <p class="ToC"> Așii Cerului </p>
   <h4>AVIAȚIA ÎN PRIMUL RĂZBOI MONDIAL <br>  1914 - 1918</h4>
     <a href="#introducere"><span>Introducere</span></a>
-    <a href="#context"><span>Context</span></a>
-
+    <div class="nav-group" data-group="context">
+    <a href="#context" class="nav-item" data-main="context"><span>Context</span></a>
+    <div class="subnav" data-for="context"></div>
+    </div>
 </div>
 
 <div class="content-box">
@@ -32,7 +34,7 @@
     <img src="assets/introducere.png" alt="Avion din Primul Război Mondial" class="media-img">
     </div>
     <h3>Escadrilă de biplane</h3>
-    <div class="text" data-src="text.txt" data-part="INTRODUCERE"></div>
+    <div class="text" data-src="text.txt" data-part="INTRODUCERE" data-parent="introducere"></div>
     </section>
     
     <section id="context" class="page-section is-active">
@@ -43,8 +45,7 @@
     <img src="assets/context.png" alt="Avion din Primul Război Mondial" class="media-img">
     </div>
     <h3>Echipaj pregătind un avion biplan</h3>
-    <div class="text" data-src="text.txt" data-part="CONTEXT"></div>
-    </section>
+    <div class="text" data-src="text.txt" data-part="CONTEXT" data-parent="context"></div>    </section>
 </div>
 
 </body>
