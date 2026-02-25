@@ -1,6 +1,12 @@
 === INTRODUCERE ===
 
-La izbucnirea Primului Război Mondial, în 1914, aviația era o tehnologie nouă, aflată încă în fază experimentală. Inițial folosite pentru recunoaștere și observarea artileriei, avioanele erau fragile, construite din lemn și pânză, iar confruntările aeriene erau improvizate. Introducerea mitralierei sincronizate în 1915 a transformat însă avionul într-o armă ofensivă, marcând începutul luptei pentru superioritatea aeriană. Pe parcursul războiului, aparatele de zbor au devenit tot mai rapide, mai bine înarmate și specializate, iar controlul cerului a ajuns să influențeze decisiv desfășurarea operațiunilor de pe sol.
+La începutul secolului al XX-lea, aviația era una dintre cele mai noi și spectaculoase invenții tehnologice. Primul zbor controlat realizat de frații Wilbur Wright și Orville Wright în 1903 demonstrase că zborul mecanic era posibil, însă dezvoltarea sa era încă limitată. În anii care au precedat izbucnirea Primul Război Mondial, marile puteri europene au început să experimenteze utilizarea avioanelor în scopuri militare, deși rolul lor era considerat mai degrabă auxiliar.
+
+La izbucnirea războiului, în 1914, aviația era o tehnologie nouă, aflată încă într-o fază experimentală. Avioanele erau fragile, construite din lemn și pânză, cu motoare relativ slabe și instrumente rudimentare. Inițial, acestea erau folosite aproape exclusiv pentru recunoaștere și observarea artileriei, oferind armatei o perspectivă aeriană asupra mișcărilor inamice.
+
+Pe măsură ce războiul a continuat, confruntările dintre aparatele de recunoaștere au devenit tot mai frecvente. La început, piloții improvizau luptele aeriene folosind arme personale sau încercând să forțeze adversarul să se retragă. Introducerea mitralierei sincronizate în 1915 a schimbat însă radical rolul avionului, transformându-l într-o armă ofensivă și marcând începutul luptei pentru superioritatea aeriană.
+
+Pe parcursul conflictului, tehnologia aeronautică a evoluat rapid. Avioanele au devenit mai rapide, mai bine înarmate și tot mai specializate, iar controlul cerului a început să influențeze decisiv desfășurarea operațiunilor de pe sol. Astfel, aviația s-a transformat dintr-un experiment tehnologic într-un element esențial al războiului modern.
 
 === CONTEXT ===
 
