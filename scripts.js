@@ -11,13 +11,21 @@ async function waitForFonts() {
   document.body.classList.add("fonts-ready");
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 async function fillTextColumns(el) {
   const src = el.getAttribute("data-src") || "text.txt";
   const wanted = (el.getAttribute("data-part") || "").toLowerCase().trim();
 
   const res = await fetch(src);
   const fullText = await res.text();
-
   const sections = {};
   const parts = fullText.split(/^\s*===\s*(.+?)\s*===\s*$/m);
 
@@ -28,15 +36,33 @@ async function fillTextColumns(el) {
 
   const chosenText = sections[wanted] || "";
 
-  const paragraphs = chosenText
+  const blocks = chosenText
     .replace(/\r\n/g, "\n")
     .split(/\n\s*\n/)
-    .map((p) => p.trim())
+    .map(b => b.trim())
     .filter(Boolean);
 
-  el.innerHTML = paragraphs
-    .map((p, i) => `<p class="${i === 0 ? "three" : ""}">${p}</p>`)
-    .join("");
+  let firstNormalParagraphPlaced = false;
+
+  const html = blocks.map(block => {
+    const m = block.match(/^\s*==\s*(.+?)\s*==\s*$/);
+    if (m) {
+      const subtitle = m[1].trim();
+        return `
+          <p class="subsection">
+            <span class="subsection-text">${escapeHtml(subtitle)}</span>
+            <span class="subsection-cross">✠</span>
+          </p>
+        `;
+    }
+
+    const cls = !firstNormalParagraphPlaced ? "three" : "";
+    if (!firstNormalParagraphPlaced) firstNormalParagraphPlaced = true;
+
+    return `<p class="${cls}">${escapeHtml(block)}</p>`;
+  }).join("");
+
+  el.innerHTML = html;
 }
 
 function wireFooterArrows(activeId) {
