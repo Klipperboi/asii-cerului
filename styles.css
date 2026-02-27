@@ -97,6 +97,14 @@ h3 {
   font-weight: lighter;
 }
 
+.slideshow + h3{
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.slideshow + h3.is-fading{
+  opacity: 0;
+  transform: translateY(-3px);
+}
+
 h4 {
   font-family: "IM Fell English", serif;
   font-size: 15px;
@@ -113,7 +121,7 @@ h4 {
   font-size: 50px;
   color: #B08A3E;
   font-weight: normal;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 0px;
   letter-spacing: 7px;
 }
@@ -205,10 +213,18 @@ h4 {
   justify-content: center;
 }
 
-.image-container img {
+.slideshow {
+  position: relative;
   width: 85%;
-  height: auto;
-  display: block;
+  margin: 50px auto 10px;
+
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: 10px solid #fff;
   box-shadow:
     0 4px 8px rgba(0,0,0,0.2),
@@ -216,10 +232,50 @@ h4 {
   box-sizing: border-box;
 }
 
-.media-img {
-  filter: sepia(70%) contrast(90%) brightness(95%) saturate(85%);
+.slideshow-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(22%) contrast(96%) brightness(99%) saturate(92%);
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 600ms ease;
 }
 
+.slideshow-img.is-fading {
+  opacity: 0;
+}
+
+.slide-prev,
+.slide-next {
+  position: absolute;
+  top: 50%;
+  margin-top: -34px;
+  z-index: 3;
+  margin-left: -25px;
+}
+
+.slide-prev,
+.slide-next {
+  background: rgba(255, 255, 255, 0.85);  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 4px;
+}
+
+.slide-next {
+  margin-left: auto;
+  margin-right: -25px;
+}
+
+.slide-prev { left: 14px; }
+.slide-next { right: 14px; }
+
+.slide-prev span,
+.slide-next span {
+  display: inline-block;
+  line-height: 1;
+}
 .text-columns {
   column-count: 2;
   column-gap: 60px;
@@ -529,4 +585,584 @@ h4 {
 
 .switch input:checked + .slider::before {
   transform: translateX(13px);
+}
+
+.hero-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border: 10px solid #fff;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.2),
+    0 6px 20px rgba(0,0,0,0.19);
+  box-sizing: border-box;
+  filter: sepia(22%) contrast(96%) brightness(99%) saturate(92%);
+}
+
+.pilot-cards {
+  width: 85%;
+  margin: 50px auto 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.pilot-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 26px;
+  padding: 18px;
+
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 8px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+}
+
+.pilot-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pilot-portrait,
+.pilot-plane {
+  width: 100%;
+  display: block;
+  border: 8px solid #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  filter: sepia(18%) contrast(98%) brightness(100%) saturate(92%);
+}
+
+.pilot-right {
+  font-family: "EB Garamond", serif;
+  color: #222;
+}
+
+.pilot-name {
+  margin: 4px 0 10px;
+  text-align: left;
+  font-style: normal;
+  font-size: 26px;
+  color: #222;
+}
+
+.pilot-meta {
+  margin: 0 0 14px;
+  font-size: 16px;
+  color: #333;
+}
+
+.pilot-stats {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border-left: 6px solid #B08A3E;
+  background: rgba(176, 138, 62, 0.08);
+}
+
+.pilot-stats p {
+  margin: 6px 0;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.pilot-meta span,
+.pilot-stats span {
+  color: #6b5a35;
+  font-weight: 700;
+}
+
+.pilot-desc p {
+  margin: 0 0 12px;
+  font-size: 17px;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.pilot-desc p:last-child {
+  margin-bottom: 0;
+}
+
+.aircraft-cards {
+    width: 85%;
+  margin: 50px auto 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.aircraft-card {
+  display: grid;
+  gap: 26px;
+  padding: 18px;
+
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 8px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+}
+
+.aircraft-name {
+  margin: 4px 0 10px;
+  text-align: left;
+  font-style: normal;
+  font-size: 26px;
+  color: #222;
+}
+
+.aircraft-row {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.aircraft-img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+
+  border: 8px solid #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  filter: sepia(18%) contrast(98%) brightness(100%) saturate(92%);
+}
+
+.aircraft-specs {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border-left: 6px solid #B08A3E;
+  background: rgba(176, 138, 62, 0.08);
+  font-family: "EB Garamond", serif;
+  color: #222;
+}
+
+.aircraft-specs p {
+  margin: 6px 0;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.aircraft-specs span {
+  color: #6b5a35;
+  font-weight: 700;
+}
+
+.aircraft-desc p {
+  margin: 0 0 12px;
+  font-size: 17px;
+  line-height: 1.75;
+  text-align: justify;
+  font-family: "EB Garamond", serif;
+}
+
+.aircraft-desc p:last-child {
+  margin-bottom: 0;
+}
+
+.aircraft-desc {
+  margin-top: 16px;
+}
+
+.aircraft-desc p {
+  margin: 0 0 12px;
+  font-size: 17px;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.menu-divider {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 20px 0;
+  opacity: 0.7;
+}
+
+.menu-divider img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .aircraft-top {
+    grid-template-columns: 1fr;
+  }
+  .aircraft-name {
+    text-align: center;
+  }
+}
+@media (max-width: 900px) {
+  .pilot-card { grid-template-columns: 1fr; }
+  .pilot-name { text-align: center; }
+}
+
+.sidenav::-webkit-scrollbar {
+  width: 12px;
+}
+
+.sidenav::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.sidenav::-webkit-scrollbar-thumb {
+  background: #B08A3E;
+  border-radius: 999px;
+  border: 3px solid #1e1e1e;
+}
+
+.sidenav::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(176,138,62,0.95),
+    rgba(143,111,47,0.85)
+  );
+}
+
+
+
+.timeline {
+  --pad-left: 60px;
+  --axis-in-pad: 25px;
+  --line-width: 2px;
+  --dot-size: 10px;
+  --dot-border: 2px;
+  position: relative;
+  margin: 25px 0 10px;
+  padding-left: var(--pad-left);
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+
+  left: calc(var(--pad-left) + var(--axis-in-pad));
+
+  top: 0;
+  bottom: 0;
+  width: var(--line-width);
+  background: rgba(176, 138, 62, 0.8);
+  z-index: 0;
+}
+
+.timeline.no-line::before {
+  display: none;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin: 22px 0;
+  font-family: "EB Garamond", serif;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+
+  left: calc(
+    var(--axis-in-pad)
+    - (var(--dot-size) / 2)
+    - var(--dot-border)
+    + (var(--line-width) / 2)
+  );
+
+  top: 14px;
+  width: var(--dot-size);
+  height: var(--dot-size);
+
+  border-radius: 50%;
+  background: #fbf7f0;
+  border: var(--dot-border) solid #B08A3E;
+  z-index: 1;
+}
+
+.timeline-year {
+  font-weight: 700;
+  color: #222;
+  font-variant-numeric: tabular-nums;
+  min-width: unset;
+  text-align: left;
+  flex-shrink: 0;
+  margin-left: 60px;
+}
+
+.timeline-text {
+  text-align: justify;
+}
+
+#resurse .three::first-letter {
+  -webkit-initial-letter: unset;
+  initial-letter: unset;
+  float: none;
+  padding-right: 0;
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+}
+
+#resurse p.note-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 1.1em 0;
+}
+
+#resurse .note-num {
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #B08A3E;
+  min-width: 28px;
+}
+
+#resurse .note-text {
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: justify;
+  color: #222;
+}
+#resurse .text-columns p.subsection {
+  letter-spacing: 10px;
+  font-size: 16px;
+}
+
+#resurse .text-columns .subsection-cross {
+  font-size: 12px;
+}
+
+/* RESURSE: two-column layout (notes left, bibliography right) */
+#resurse .resurse-grid{
+  width: 85%;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Use your book typography but slightly tighter */
+#resurse .resurse-col{
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Tighten vertical rhythm vs normal pages */
+#resurse .resurse-col p{
+  margin: 0 0 0.75em 0;
+}
+
+/* Smaller section headers inside RESURSE */
+#resurse p.subsection{
+  margin: 20px auto 26px;
+  padding-bottom: 22px;
+}
+
+/* NOTE / BIBLIO: clean numbered lines */
+#resurse p.note-item{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 0.7em 0;   /* tighter */
+}
+
+#resurse .note-num{
+  font-weight: 700;
+  color: #B08A3E;
+  min-width: 28px;
+}
+
+#resurse .note-text{
+  color: #222;
+  text-align: justify;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  #resurse .resurse-grid{
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+#resurse .text-columns{
+  column-count: 1;
+  column-gap: 0;
+  width: 100%;
+  margin: 0;
+}
+
+#resurse .resurse-biblio p strong,
+#resurse .resurse-biblio p:has(> em:first-child) {
+  color: #B08A3E;
+  font-weight: 600;
+}
+
+#resurse .resurse-biblio strong{
+  color: #B08A3E;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: block;
+  margin: 1.2em 0 0.6em 0;
+}
+
+#resurse .biblio-section{
+  color: #B08A3E;
+  font-weight: 650;
+  letter-spacing: 1px;
+  margin: 1.2em 0 0.6em 0;
+}
+/* -----------------------------------------
+   NOTE anchor (highlighted text in body)
+----------------------------------------- */
+.note-anchor{
+  color: #B08A3E;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+/* Make sure no old pseudo-tooltips interfere */
+.note-anchor::before,
+.note-anchor::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* -----------------------------------------
+   Global tooltip element (JS positions it)
+----------------------------------------- */
+.note-tooltip{
+  position: fixed;
+  z-index: 99999;
+
+  display: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+
+  width: 360px;
+  max-width: min(520px, 60vw);
+
+  background: #fbf7f0; /* paper */
+  border: 1px solid rgba(0,0,0,0.15);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  padding: 12px 14px;
+
+  font-family: "EB Garamond", serif;
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  word-spacing: normal;
+  text-align: left;
+
+  pointer-events: none;
+  white-space: normal;
+}
+
+/* open */
+.note-tooltip.is-open{
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -----------------------------------------
+   Arrow (pointer)
+   - open-right: arrow top-left
+   - open-left : arrow top-right
+----------------------------------------- */
+.note-tooltip::before{
+  content: "";
+  position: absolute;
+  top: -8px;
+
+  border: 8px solid transparent;
+  border-bottom-color: rgba(0,0,0,0.15);
+}
+
+/* little inner fill so it looks "paper" not just border */
+.note-tooltip::after{
+  content: "";
+  position: absolute;
+  top: -7px;
+
+  border: 7px solid transparent;
+  border-bottom-color: #fbf7f0;
+}
+
+/* Tooltip opens to the RIGHT of anchor: arrow at top-left */
+.note-tooltip.open-right::before{
+  left: 14px;
+}
+.note-tooltip.open-right::after{
+  left: 15px;
+}
+
+/* Tooltip opens to the LEFT of anchor: arrow at top-right (your request) */
+.note-tooltip.open-left::before{
+  right: 14px;
+}
+.note-tooltip.open-left::after{
+  right: 15px;
+}
+
+.back-from-resurse {
+  position: fixed;
+  bottom: 40px;
+  transform: translateX(-50%) translateY(18px);
+
+  padding: 14px 28px;
+
+  background: rgba(20, 20, 20, 0.92);
+  border: 2px solid rgba(176, 138, 62, 0.85);
+
+  border-radius: 8px;   /* 👈 soft rectangle, not pill */
+
+  color: #e9e1d6;
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.35),
+    0 0 14px rgba(176, 138, 62, 0.15);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+
+  z-index: 9999;
+}
+
+.back-from-resurse.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.back-from-resurse:hover {
+  border-color: rgba(176, 138, 62, 1);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(176, 138, 62, 0.25);
+}
+
+.back-from-resurse:active {
+  transform: translateX(-50%) translateY(2px);
 }
